@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Waren auf Platz buchen</h3>
+    <input type="text" id="artikel" placeholder="Artikelname">
+    <input type="text" id="platz" placeholder="Lagerplatz (z.B. A-01)">
+    <input type="number" id="menge" placeholder="Menge">
+    <button onclick="senden()">Buchen</button>
+    <br><a href="<?= getUrl() ?>?p=dashboard">Zurück</a>
+
+    <script>
+      function senden() {
+        const data = {
+          action: 'buche',
+          artikel: document.getElementById('artikel').value,
+          platz: document.getElementById('platz').value,
+          menge: document.getElementById('menge').value
+        };
+        google.script.run.withSuccessHandler(() => alert('Erfolgreich gebucht')).processForm(data);
+      }
+    </script>
+  </body>
+</html>
