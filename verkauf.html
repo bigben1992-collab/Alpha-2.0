@@ -1,0 +1,19 @@
+<!-- einkauf.html (Beispiel) -->
+<h3>Waren-Einkauf registrieren</h3>
+<input type="text" id="art" placeholder="Artikel">
+<input type="number" id="qty" placeholder="Menge">
+<input type="number" step="0.01" id="pr" placeholder="Einkaufspreis pro Stück">
+<button onclick="save('Einkauf')">Einkauf buchen</button>
+
+<script>
+  function save(typ) {
+    const data = {
+      action: 'transaktion',
+      typ: typ,
+      artikel: document.getElementById('art').value,
+      menge: document.getElementById('qty').value,
+      preis: document.getElementById('pr').value
+    };
+    google.script.run.withSuccessHandler(() => alert(typ + ' erfasst')).processForm(data);
+  }
+</script>
