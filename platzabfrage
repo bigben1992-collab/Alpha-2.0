@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Abfrage pro Lagerplatz</h3>
+    <input type="text" id="platzInp" placeholder="Platz eingeben">
+    <button onclick="abfragen()">Suchen</button>
+    <div id="ergebnis"></div>
+    <br><a href="<?= getUrl() ?>?p=dashboard">Zurück</a>
+
+    <script>
+      function abfragen() {
+        const p = document.getElementById('platzInp').value;
+        google.script.run.withSuccessHandler(show).getPlatzDaten(p);
+      }
+      function show(daten) {
+        let html = '<table border="1"><tr><th>Artikel</th><th>Menge</th></tr>';
+        daten.forEach(r => html += `<tr><td>${r[1]}</td><td>${r[3]}</td></tr>`);
+        document.getElementById('ergebnis').innerHTML = html + '</table>';
+      }
+    </script>
+  </body>
+</html>
