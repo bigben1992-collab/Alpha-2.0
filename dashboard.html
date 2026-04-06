@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #f4f4f9; }
+      .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; }
+      .nav-card { 
+        padding: 20px; background: white; border: 1px solid #ddd; border-radius: 8px;
+        text-decoration: none; color: #333; text-align: center; font-weight: bold;
+        transition: transform 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .nav-card:hover { transform: translateY(-3px); background: #eef; }
+    </style>
+  </head>
+  <body>
+    <h1>Lager-Backend Steuerung</h1>
+    <div class="grid">
+      <a class="nav-card" href="<?= getUrl() ?>?p=buche">📦 Warenbuchung</a>
+      <a class="nav-card" href="<?= getUrl() ?>?p=preis_update">🏷️ Preis-Update</a>
+      <a class="nav-card" href="<?= getUrl() ?>?p=platzabfrage">🔍 Platzabfrage</a>
+      <a class="nav-card" href="<?= getUrl() ?>?p=einkauf">📥 Einkauf (Zugang)</a>
+      <a class="nav-card" href="<?= getUrl() ?>?p=verkauf">📤 Verkauf (Abgang)</a>
+      <a class="nav-card" href="<?= getUrl() ?>?p=bilanz" style="grid-column: span 2; background: #d1e7dd;">📊 Bilanz anzeigen</a>
+    </div>
+  </body>
+</html>
