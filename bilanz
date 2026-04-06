@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body onload="laden()">
+    <h3>Finanzielle Bilanz</h3>
+    <div id="auswertung">Lade Daten...</div>
+    <br><a href="<?= getUrl() ?>?p=dashboard">Zurück</a>
+
+    <script>
+      function laden() {
+        google.script.run.withSuccessHandler(res => {
+          document.getElementById('auswertung').innerHTML = `
+            <p>Gesamtausgaben (Einkauf): ${res.einkauf.toFixed(2)} €</p>
+            <p>Gesamteinnahmen (Verkauf): ${res.verkauf.toFixed(2)} €</p>
+            <hr>
+            <p><strong>Gewinn/Verlust: ${res.bilanz.toFixed(2)} €</strong></p>
+          `;
+        }).getBilanzDaten();
+      }
+    </script>
+  </body>
+</html>
