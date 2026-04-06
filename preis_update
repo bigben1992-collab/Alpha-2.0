@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Preis aktualisieren</h3>
+    <input type="text" id="artikel" placeholder="Artikelname">
+    <input type="number" step="0.01" id="neuerPreis" placeholder="Neuer Preis €">
+    <button onclick="update()">Preis speichern</button>
+    <br><a href="<?= getUrl() ?>?p=dashboard">Zurück</a>
+
+    <script>
+      function update() {
+        const data = {
+          action: 'preis_update',
+          artikel: document.getElementById('artikel').value,
+          preis: document.getElementById('neuerPreis').value
+        };
+        google.script.run.withSuccessHandler(() => alert('Preis aktualisiert')).processForm(data);
+      }
+    </script>
+  </body>
+</html>
